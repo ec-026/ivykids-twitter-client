@@ -12,18 +12,20 @@ const SEARCH_USERS = gql`
     }
   }
 `;
-const handleSearch = async () => {
-  searchUsers({
-    variables: {
-      query: searchQuery
-    }
-  });
-};
 
 function UserSearchComponent() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchUsers, { data }] = useLazyQuery(SEARCH_USERS);
+
+  const handleSearch = async () => {
+    searchUsers({
+      variables: {
+        query: searchQuery
+      }
+    });
+  };
+  
 
   useEffect(() => {
     if (searchQuery !== '') {
