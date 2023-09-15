@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dropdown, Icon } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 import gql from 'graphql-tag';
@@ -12,6 +12,13 @@ const SEARCH_USERS = gql`
     }
   }
 `;
+const handleSearch = async () => {
+  searchUsers({
+    variables: {
+      query: searchQuery
+    }
+  });
+};
 
 function UserSearchComponent() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,14 +30,6 @@ function UserSearchComponent() {
       handleSearch();
     }
   }, [searchQuery]);
-
-  const handleSearch = async () => {
-    searchUsers({
-      variables: {
-        query: searchQuery
-      }
-    });
-  };
 
   useEffect(() => {
     if (data && data.searchUsers) {

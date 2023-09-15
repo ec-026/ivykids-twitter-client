@@ -1,6 +1,6 @@
 // MenuBar.js
 import React, { useContext, useState } from 'react';
-import { Menu, Input, Icon } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import UserSearchComponent from './UserSearchComponent';
