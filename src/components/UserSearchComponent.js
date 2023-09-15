@@ -25,13 +25,12 @@ function UserSearchComponent() {
       }
     });
   };
-  
 
   useEffect(() => {
     if (searchQuery !== '') {
       handleSearch();
     }
-  }, [searchQuery]);
+  }, [searchQuery, handleSearch]); // Include handleSearch in the dependency array
 
   useEffect(() => {
     if (data && data.searchUsers) {
@@ -39,7 +38,7 @@ function UserSearchComponent() {
     }
   }, [data]);
 
-  const dropdownOptions = searchResults.map(user => ({
+  const dropdownOptions = searchResults.map((user) => ({
     key: user.id,
     text: user.username,
     value: user.username,
@@ -51,14 +50,14 @@ function UserSearchComponent() {
       fluid
       search
       selection
-      icon="search" // This sets the icon to a search icon
+      icon="search"
       options={dropdownOptions}
       placeholder="Search users..."
       onSearchChange={(e, data) => {
         setSearchQuery(data.searchQuery);
       }}
       value={null}
-      style={{ width: '400px' }} // Adjust the width to your preference
+      style={{ width: '400px' }}
     />
   );
 }
