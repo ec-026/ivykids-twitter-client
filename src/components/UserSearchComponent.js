@@ -18,19 +18,19 @@ function UserSearchComponent() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchUsers, { data }] = useLazyQuery(SEARCH_USERS);
 
-  const handleSearch = async () => {
-    searchUsers({
-      variables: {
-        query: searchQuery
-      }
-    });
-  };
-
   useEffect(() => {
+    const handleSearch = async () => {
+      searchUsers({
+        variables: {
+          query: searchQuery
+        }
+      });
+    };
+
     if (searchQuery !== '') {
       handleSearch();
     }
-  }, [searchQuery, handleSearch]); // Include handleSearch in the dependency array
+  }, [searchQuery, searchUsers]);
 
   useEffect(() => {
     if (data && data.searchUsers) {
