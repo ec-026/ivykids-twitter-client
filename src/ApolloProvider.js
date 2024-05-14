@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { setContext } from 'apollo-link-context';
 
 const httpLink = createHttpLink({
-  uri: 'https://ivykids-twitter-server-production.up.railway.app/'
+  uri: 'https://closed-marlie-ec026-a659f8fe.koyeb.app'
 });
 
 const authLink = setContext(() => {
